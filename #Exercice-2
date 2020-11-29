@@ -1,0 +1,33 @@
+#Exercice-2
+
+
+import matplotlib.pyplot as plt
+import random
+
+X =[0.5]
+Y =[0]
+
+for i in range(30001):
+    P =random.uniform(0,1)
+    
+    if 0 <= P < 0.02:
+        LX = 0.5 
+        LY = 0.27* Y[i] 
+    elif 0.02 <= P < 0.17:
+        LX = -0.139* X[i] + 0.263* Y[i] + 0.57
+        LY = 0.224* Y[i] - 0.036 + 0.246* X[i]   
+    elif 0.17 <= P < 0.3:   
+        LX = 0.17* X[i] - 0.215* Y[i] + 0.408
+        LY = (0.176* Y[i]) + (0.222* X[i]) + 0.0893
+    elif 0.3 <= P <= 1:
+        LX = 0.781* X[i] + 0.034* Y[i] + 0.1075
+        LY = 0.739* Y[i] - 0.032* X[i] + 0.27    
+        
+    X.append(LX)
+    Y.append(LY)       
+        
+ax =plt.gca()
+ax.set_xticks([])
+ax.set_yticks([])        
+plt.plot(X,Y,'g.')
+plt.show()
